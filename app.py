@@ -17,16 +17,23 @@ def index():
 #Injection Vulnerability
 @app.route('/welcome/<name>')
 def success(name):
-    return 'welcome %s' % name
+    if request.method == 'GET':
+        name = request.args.get('id')
+        try:
+            with open(name, 'r') as file:
+                content = file.read()
+        except:
+          return 'welcome %s' % name
+    return 'welcome %s' % name, content
 
 #Injection Vulnerability
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
-        user = request.form['name']
+        user = request.form['id']
         return redirect(url_for('success', name=user))
     else:
-        user = request.args.get('name')
+        user = request.args.get('id')
         return redirect(url_for('success', name=user))
 
 
@@ -34,7 +41,7 @@ def login():
 @app.route('/redirect')
 def web():
     try:
-        site=request.args.get('url')
+        site=request.args.get('id')
         response = urllib.request.urlopen(site)
         output=json.dumps(response.read().decode('utf-8'))
         return jsonify({"output": output}), 200
@@ -46,7 +53,7 @@ def web():
 @app.route('/date')
 def command():
     try:
-        cmd = request.args.get('exec')
+        cmd = request.args.get('id')
         count = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
         stdout, stderr = count.communicate()
         #print(stdout.decode())

@@ -4,12 +4,12 @@ custom:
   wsgi:
     app: app.app
     packRequirements: false  
-  bucketName: myrandombucket
+  bucketName: d5abd91c-e9ad-408b-88ef-f39707682442
 
 provider:
   name: aws
-  runtime: python3.8
-  region: us-west-2
+  runtime: python3.9
+  region: us-east-1
   environment:
     VARIABLE_1: supersecret99
   iamRoleStatements:
@@ -45,6 +45,5 @@ functions:
     events:
       - http: ANY /
       - http: 'ANY /{proxy+}'
-
 
 
