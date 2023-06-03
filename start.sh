@@ -52,7 +52,7 @@ do
             pip install --no-cache-dir --use-deprecated=legacy-resolver -r requirements.txt
 
             npm install -g serverless
-            AWS_ACCESS_KEY_ID=$n1 AWS_SECRET_ACCESS_KEY=$n2 AWS_SESSION_TOKEN=$n3 sls plugin install -n serverless-python-requirements && sls plugin install -n serverless-s3-deploy
+            AWS_ACCESS_KEY_ID=$n1 AWS_SECRET_ACCESS_KEY=$n2 AWS_SESSION_TOKEN=$n3 sls plugin install -n serverless-python-requirements && sls plugin install -n serverless-s3-deploy && sls plugin install -n serverless-wsgi
             AWS_ACCESS_KEY_ID=$n1 AWS_SECRET_ACCESS_KEY=$n2 AWS_SESSION_TOKEN=$n3 sls deploy
             break
             ;;
