@@ -17,8 +17,8 @@ options=("Destroy Serverless Attack Lab"
 select opt in "${options[@]}"
 do
     case $opt in
-        "Serverless Attack Lab")
-            echo "Serverless Attack Lab"
+        "Destroy Serverless Attack Lab")
+            echo "Destroy Serverless Attack Lab"
             read -p "Access Key ID [Required]:" n1
             read -p "Secret Access Key: [Required]:" n2
             read -p "AWS session token: [Optional]:" n3
