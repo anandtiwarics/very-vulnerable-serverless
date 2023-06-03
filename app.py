@@ -31,10 +31,10 @@ def success(name):
 def login():
     if request.method == 'POST':
         user = request.form['id']
-        return redirect(url_for('success', name=user))
+        return url_for('success' + user, name=user)
     else:
         user = request.args.get('id')
-        return redirect(url_for('success', name=user))
+        return url_for('success' + user, name=user)
 
 
 #SSRF Vulnerability
@@ -121,4 +121,3 @@ def deserial():
         #return 'Attack detected!'
     #else:
         #return 'Invalid input.'
-
