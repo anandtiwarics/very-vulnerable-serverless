@@ -4,7 +4,7 @@ custom:
   wsgi:
     app: app.app
     packRequirements: false  
-  bucketName: d5abd91c-e9ad-408b-88ef-f39707682442
+  bucketName: myrandombucket
 
 provider:
   name: aws
