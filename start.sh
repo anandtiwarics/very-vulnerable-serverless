@@ -24,18 +24,33 @@ do
             read -p "AWS session token: [Optional]:" n3
             sed -i'' -e "s/myrandombucket/$(uuidgen | tr '[:upper:]' '[:lower:]')/g" serverless.yml
 
-            echo '[INSTALL] Found Python3'
-            python3 -m pip -V
+            python3.9 -V
             if [ $? -eq 0 ]; then
-            echo '[INSTALL] Found pip'
+            echo '[INSTALL] Found python3.9'
+            else
+            echo '[ERROR] python3.9 not installed'
+            if [[ $unamestr == 'Darwin' ]]; then
+                echo 'Please install python3.9 version e.g brew install python3.9'
+            else
+                echo 'Please install python3.9 version e.g apt-get install python3.9'
+            fi
+            exit 1
+            
+            alias python3=python3.9
+            echo '[INSTALL] Found Python3'
+            python3 -m pip3.9 -V
+            if [ $? -eq 0 ]; then
+            echo '[INSTALL] Found pip3.9'
+            alias pip==pip3.9
             if [[ $unamestr == 'Darwin' ]]; then
                 python3 -m pip install --no-cache-dir --upgrade pip
             else
                 python3 -m pip install --no-cache-dir --upgrade pip --user
             fi
             else
-            echo '[ERROR] python3-pip not installed'
+            echo '[ERROR] pip3.9 not installed'
             exit 1
+            
             fi
             echo '[INSTALL] Using python virtualenv'
             rm -rf ./venv
