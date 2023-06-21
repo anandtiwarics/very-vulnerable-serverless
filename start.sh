@@ -9,7 +9,7 @@ if ! [ -x "$(command -v npm)" ]; then
   echo '[ERROR] npm is not installed.' >&2
   exit 1
 fi
-
+git stash
 PS3='Please select an option from the above choices: '
 options=("Serverless Attack Lab"
         "Quit")
