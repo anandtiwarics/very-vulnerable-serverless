@@ -8,7 +8,7 @@ custom:
 
 provider:
   name: aws
-  runtime: python3.9
+  runtime: python3.8
   region: us-east-1
   environment:
     VARIABLE_1: supersecret99
@@ -16,6 +16,15 @@ provider:
     - Effect: Allow
       Action:
         - s3:*
+        - cloudwatch:*"
+        - ecr:GetAuthorizationToken
+        - ecr:BatchCheckLayerAvailability
+        - ecr:GetDownloadUrlForLayer
+        - ecr:BatchGetImage
+        - logs:CreateLogStream
+        - logs:PutLogEvents
+        - iam:PassRole
+        - iam:ListAttachedUserPolicies
       Resource:
         - "*"
 
